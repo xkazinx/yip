@@ -9,6 +9,10 @@ PDot::PDot(const Vector2f& pos, const Vector2f& end_pos) :
 {
 	_shape.setRadius(3.f);
 	_shape.setFillColor(sf::Color::Red);
+
+	cout << _end_pos.x << "/" << _end_pos.y << "  " << pos.x << "/" << pos.y << endl;
+	auto vec = _end_pos - pos;
+	_angle = atan2(vec.y, vec.x);
 }
 
 void PDot::Render(TargetStatesRef&& ts) const
@@ -18,41 +22,10 @@ void PDot::Render(TargetStatesRef&& ts) const
 
 void PDot::Update(const sf::Time& delta)
 {
-	auto x_vel = .50f;
-	auto y_vel = .50f;
-	float x_diff, y_diff;
-	if (_initial_pos.x > _end_pos.x)
-	{
-		x_vel *= -1.f;
-		x_diff = _initial_pos.x - _end_pos.x;
-	}
-	else
-	{
-		x_diff = _end_pos.x - _initial_pos.x;
-	}
-	x_diff = _initial_pos.x - _end_pos.x;
-	if (_initial_pos.y > _end_pos.y)
-	{
-		y_vel *= -1.f;
-		y_diff = _initial_pos.y - _end_pos.y;
-	}
-	else
-	{
-		y_diff = _end_pos.y - _initial_pos.y;
-	}
-	y_diff = _initial_pos.y - _end_pos.y;
-	/*
-	auto angle = atan2(x_diff, y_diff);
-
-	auto magnitude = 1.0f;
-	float velX = cos(angle) * magnitude;
-	float velY = sin(angle) * magnitude;*/
-
-	/*auto angle = atan2(x_diff, y_diff);
-	auto magnitude = 1.0f;
-	float velX = cos(angle) * magnitude;
-	float velY = sin(angle) * magnitude;
-	move(velX * delta.asMilliseconds(), velY * delta.asMilliseconds());*/
+	constexpr auto x_vel = .30f + .5f; //.5f = camera movement
+	constexpr auto y_vel = .30f + .5f;
+	
+	move(cos(_angle) * x_vel, sin(_angle) * y_vel);
 }
 
 Object::Collider PDot::GetCollider() const

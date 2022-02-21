@@ -17,5 +17,6 @@ public:
 private:
 	bool _HasExpired() const override;
 	Vector2f _initial_pos, _end_pos;
+	float _angle;
 };
 

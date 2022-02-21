@@ -28,7 +28,7 @@ void Enemy::Update(const sf::Time & delta)
 			
 			g_game->_projectiles.push_back(mk<PDot>(
 				getPosition(), g_player->getPosition()
-				));
+			));
 		}
 	}
 
