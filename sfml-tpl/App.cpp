@@ -1,12 +1,14 @@
+// common
 #include "stdafx.h"
 #include "App.h"
-
+// extra
 #include "Ticker.h"
 #include "Camera.h"
 #include "SceneMgr.h"
 
 App::App()
 {
+	// always is called, make sdlapp
 	global::app::Initialize();
 
 	_CreateWindow();
