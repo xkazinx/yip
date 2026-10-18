@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Every project under src\ builds with the 64-bit-hosted compiler, linker and
+  librarian (bin\HostX64\x86) and produces x86 (Win32) exes.
+
+  yip uses kazilib's headers only (src\dep\kazilib\lib\shared\include: std names,
+  Under / magic_enum, the scene manager, startup flags, exception reports,
+  Testerino), so kazilib's library is not built or linked. SFML 3.1 is
+  src\dep\SFML-3.1.0 (setup.ps1).
+-->
+<Project>
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+    <YipDep>$(MSBuildThisFileDirectory)dep\</YipDep>
+    <YipSfml>$(YipDep)SFML-3.1.0\</YipSfml>
+    <YipKazilib>$(YipDep)kazilib\</YipKazilib>
+  </PropertyGroup>
+</Project>

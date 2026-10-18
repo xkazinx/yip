@@ -1,0 +1,90 @@
+# yip end to end: the menu, Start Game, moving, the weapons, firing at an enemy until
+# it is beaten, Escape back to the menu and Enter into a fresh game.
+# node src\dep\kazilib\testerino\tt.js run src\tests\testerino\play.tt
+start client_1 cwd=${CHECKOUT}\deploy exe=${CHECKOUT}\deploy\yip.exe timeout=30000 -- testerino=1 catchexceptions title=yip_test
+use client_1
+waitfor scene=Main 10000
+expect ok
+
+# The menu: stars scroll behind the Start Game button
+wait 500
+shot 01_menu
+expect ok
+image ${CHECKOUT}\testerino\client_1\shots\01_menu.png
+
+# Start Game is a button in the middle of the window
+click 400 290
+waitfor scene=Game 5000
+expect ok
+state
+expect data.weapon == Normal
+expect data.enemies == 0
+expect data.enemies_killed == 0
+expect data.y == 300
+
+# Weapons: 3 Triple (blue side circles), 2 Laser (green), 1 back to Normal
+key Num3
+expect data.weapon == Triple
+shot 02_triple
+image ${CHECKOUT}\testerino\client_1\shots\02_triple.png
+key Num2
+expect data.weapon == Laser
+key Num1
+expect data.weapon == Normal
+key Num3
+expect data.weapon == Triple
+
+# An enemy ahead on the player's line; forward, then fire until it is beaten
+spawn 1 300
+expect data.enemies == 1
+hold Right 1000
+wait 1100
+state
+expect data.screen_x >= 200
+hold A
+waitfor killed~1 8000
+expect ok
+release
+state
+expect data.enemies_killed == 1
+expect data.projectiles_hit >= 1
+expect data.enemies == 0
+shot 03_after_victory
+image ${CHECKOUT}\testerino\client_1\shots\03_after_victory.png
+
+# Ctrl+E spawns one too
+key E ctrl
+expect data.enemies == 1
+
+# Up and Down move the player and stop at the screen's edges
+hold Down 3000
+wait 3200
+state
+expect data.screen_y >= 590
+hold Up 400
+wait 500
+state
+expect data.screen_y <= 500
+
+# Shots fired with nothing in front of them miss
+hold A 500
+wait 2500
+state
+expect data.projectiles_missed >= 1
+shot 04_game
+image ${CHECKOUT}\testerino\client_1\shots\04_game.png
+
+# Escape: the menu; Enter: a fresh game
+key Escape
+waitfor scene=Main 3000
+expect ok
+key Enter
+waitfor scene=Game 3000
+expect ok
+state
+expect data.enemies_killed == 0
+expect data.enemies == 0
+expect data.weapon == Normal
+
+quit
+expect ok

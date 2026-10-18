@@ -1,0 +1,6 @@
+{
+  "projects": [
+    { "vcxproj": "yip/yip.vcxproj", "alias": "yip" }
+  ],
+  "workers": [ "192.168.0.204" ]
+}
