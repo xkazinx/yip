@@ -2,6 +2,8 @@
 
 A side-scrolling space shooter in SFML 3.1 (C++23, x86), built on kazilib.
 
+**Made without AI** until the first Claude commit (da7ebf8, 2026-10-18); AI was used after that for the updated deployment and this README.
+
 The world scrolls right; the ship (the white triangle) moves inside the left 80 % of
 the screen and fires at the yellow enemies, which fire red shots back at it.
 
