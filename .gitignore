@@ -12,5 +12,7 @@
 /deploy/*.exp
 /deploy/*.old*
 /deploy/exceptions/
+# The web build (build_web.ps1)
+/web/
 # Testerino endpoints, shots and reports (the routines are in src/tests/testerino/)
 /testerino/

@@ -7,6 +7,18 @@
 #include "SGame.h"
 #include "Player.h"
 #include "Input.h"
+#ifndef _WIN32
+// The web build: no bridge (a browser has no endpoint folder); kazilib's
+// web/tools/browser.js drives the page instead (src\tests\web\)
+namespace testerino
+{
+	void Start() {}
+	void Pump() {}
+	void AfterDraw(sf::RenderWindow &) {}
+	void Stop() {}
+	bool Active() { return false; }
+}
+#else
 #include <initflags.h>
 #include <testerino/tcore.h>
 
@@ -262,7 +274,7 @@ namespace testerino
 		}
 
 		g_active = true;
-		cout << "Testerino: listening on " << g_ep.Dir().string() << "\n";
+		cout << "Testerino: listening on " << g_ep._dir.string() << "\n";
 	}
 
 	void Pump()
@@ -327,3 +339,4 @@ namespace testerino
 		return g_active;
 	}
 }
+#endif

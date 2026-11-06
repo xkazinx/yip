@@ -78,7 +78,12 @@ void SGame::Update(const sf::Time & delta)
 			return false;
 
 		if (obj->Is(ObjectID::Enemy))
+		{
 			(obj->_hit ? _enemies_killed : _enemies_missed)++;
+			// On the console too (the browser test waits for it, src\tests\web\)
+			if (obj->_hit)
+				cout << "Enemy beaten: " << _enemies_killed << endl;
+		}
 
 		return true;
 	});

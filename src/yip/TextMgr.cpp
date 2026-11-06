@@ -2,17 +2,24 @@
 #include "TextMgr.h"
 #include "App.h"
 #include <filesystem>
+#ifdef _WIN32
 #include <windows.h>
 #undef DrawText // windows.h's DrawTextW macro, not TextMgr::DrawText
+#endif
 
 namespace
 {
-	// The fonts sit next to the exe (deploy\), wherever it is started from
+	// The fonts sit next to the exe (deploy\), wherever it is started from; in a
+	// browser at the root of the page's files (--preload-file, src\web\CMakeLists.txt)
 	std::filesystem::path ExeDir()
 	{
+#ifdef _WIN32
 		wchar_t path[MAX_PATH] = {};
 		GetModuleFileNameW(nullptr, path, MAX_PATH);
 		return std::filesystem::path(path).parent_path();
+#else
+		return "/";
+#endif
 	}
 }
 

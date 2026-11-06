@@ -1,0 +1,12 @@
+# yip (github.com/xkazinx/yip) at kazin.dev/projects/yip: the web build, static
+# files only (single-player, no server). Written by deploy/ubuntu/install.sh.
+# Imported inside the kazin.dev site block (`import /etc/caddy/sites/kazin.dev.d/*.caddy`).
+redir /projects/yip /projects/yip/ permanent
+
+# The web build, with the prefix taken off; revalidated each visit (a new build
+# keeps its names)
+handle_path /projects/yip/* {
+	root * /opt/yip/web
+	header Cache-Control "no-cache"
+	file_server
+}

@@ -5,10 +5,12 @@
 
 #pragma once
 
+#ifdef _WIN32
 #include "targetver.h"
+#include <tchar.h>
+#endif
 
 #include <stdio.h>
-#include <tchar.h>
 
 // kazilib (src\dep\kazilib, headers only): the std names written without std::,
 // v += x, magic_enum and Under(x)

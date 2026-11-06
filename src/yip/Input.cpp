@@ -13,7 +13,12 @@ namespace input
 		if (g_held.contains(key))
 			return true;
 
+#ifdef __EMSCRIPTEN__
+		// A browser sends keys only to the page that has them (the canvas)
+		return sf::Keyboard::isKeyPressed(key);
+#else
 		return GetWindow().hasFocus() && sf::Keyboard::isKeyPressed(key);
+#endif
 	}
 
 	void Hold(const Key key, const bool down)

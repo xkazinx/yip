@@ -17,8 +17,11 @@ SceneMgr::SceneMgr()
 	for (auto & s : _list)
 		_mgr.Add(*s);
 
-	_mgr._on_set = [](lib::scene::Base *, lib::scene::Base * to) {
+	// "Scene: Game" on the console (the browser test waits for it, src\tests\web\)
+	_mgr._on_set = [](lib::scene::Base * from, lib::scene::Base * to) {
 		g_camera->BindScene(static_cast<Scene *>(to));
+		if (from != to)
+			cout << "Scene: " << enum_name(static_cast<Scene *>(to)->_id) << endl;
 	};
 
 	Set(ID::Main);
@@ -36,7 +39,7 @@ void SceneMgr::Set(const ID id) {
 
 Scene * SceneMgr::Current() const
 {
-	return static_cast<Scene *>(_mgr.Current());
+	return static_cast<Scene *>(_mgr._current);
 }
 
 void SceneMgr::draw(sf::RenderTarget & target, sf::RenderStates states) const
