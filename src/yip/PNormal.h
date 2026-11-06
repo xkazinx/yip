@@ -1,9 +1,8 @@
 #pragma once
 #include "Object.h"
 
-class PNormal : public Object
+struct PNormal : Object
 {
-public:
 	PNormal(const Vector2f& pos);
 
 	void Render(TargetStatesRef&& ts) const override;
@@ -14,7 +13,6 @@ public:
 	Collider GetCollider() const override;
 
 	void HandleCollition(const Object* object) override;
-private:
 	bool _HasExpired() const override;
 	Vector2f _initial_pos;
 };

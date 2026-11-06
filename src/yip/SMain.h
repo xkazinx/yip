@@ -1,9 +1,8 @@
 #pragma once
 #include "Scene.h"
 
-class SMain : public Scene
+struct SMain : Scene
 {
-public:
 	SMain();
 	~SMain();
 

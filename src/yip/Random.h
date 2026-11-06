@@ -1,13 +1,11 @@
 #pragma once
 #include <random>
 
-class Random
+struct Random
 {
-private:
 	unique_ptr<std::mt19937> _mt;
 	std::random_device _rd;
 
-public:
 	Random();
 
 	~Random();

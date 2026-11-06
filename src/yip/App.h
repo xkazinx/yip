@@ -1,9 +1,8 @@
 #pragma once
 #include "FpsCounter.h"
 
-class App
+struct App
 {
-public:
 	App();
 	~App();
 
@@ -25,6 +24,5 @@ public:
 	// Main window we render to
 	RenderWindow _window;
 
-private:
 	void _CreateWindow();
 };

@@ -1,8 +1,7 @@
 #pragma once
 #include "Object.h"
 
-class Stars : public Object {
-public:
+struct Stars : Object {
 	template<typename Fnc>
 	void ForEach(Fnc fnc) {
 		for (size_t i = 0; i < _list.getVertexCount(); i++)
@@ -20,9 +19,8 @@ public:
 	sf::Vector2f _size;
 };
 
-class Background : public Object
+struct Background : Object
 {
-public:
 	Background(const size_t stars_count, const Vector2f & size = { 1000.f, (float)kResY });
 	~Background();
 

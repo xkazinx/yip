@@ -1,8 +1,7 @@
 #pragma once
 
-class Object : public sf::Drawable, public sf::Transformable
+struct Object : sf::Drawable, sf::Transformable
 {
-private:
 	bool _has_expired = false;
 	virtual bool _HasExpired() const { return false; }
 
@@ -19,10 +18,8 @@ private:
 #endif
 	}
 
-protected:
 	void Expire() { _has_expired = true; }
 
-public:
 	Object(const Vector2f & pos = { 0.f, 0.f }, const ObjectID id = ObjectID::None)
 		: _id(id)
 	{

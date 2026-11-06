@@ -1,9 +1,8 @@
 #pragma once
 #include "Object.h"
 
-class Enemy : public Object
+struct Enemy : Object
 {
-public:
 	Enemy(const Vector2f & pos = { 0.f, 0.f });
 	~Enemy();
 
@@ -21,6 +20,5 @@ public:
 	void HandleCollition(const Object * object) override;
 
 	sf::Clock _fire_timer;
-private:
 	bool _HasExpired() const override;
 };

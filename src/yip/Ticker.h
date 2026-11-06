@@ -1,9 +1,7 @@
 #pragma once
 
-class Ticker {
-public:
-	class Unit {
-	public:
+struct Ticker {
+	struct Unit {
 		Unit(const string & name, const int fps)
 			: _ups(sf::seconds(1.f / fps)), _fps(name) {
 

@@ -1,9 +1,8 @@
 #pragma once
 #include "UIComponent.h"
 
-class Button : public UIComponent
+struct Button : UIComponent
 {
-public:
 	using EventFunction = function<void(const sf::Event & event)>;
 
 	auto & operator->() {
@@ -18,7 +17,6 @@ public:
 
 	sf::Text _text;
 
-private:
 	void draw(sf::RenderTarget & target, sf::RenderStates states) const override
 	{
 		const float x_padding = 20.f;

@@ -1,8 +1,7 @@
 #pragma once
 
-class UIComponent : public sf::Drawable
+struct UIComponent : sf::Drawable
 {
-public:
 	UIComponent();
 	~UIComponent();
 

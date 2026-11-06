@@ -2,16 +2,14 @@
 #include "Object.h"
 #include <scene/manager.h>
 
-class UIComponent;
+struct UIComponent;
 
 // A scene on kazilib's scene manager (scene/manager.h): entering it (Initialize)
 // puts the camera back at the start and resets the scene
-class Scene : public lib::scene::Base, public sf::Drawable
+struct Scene : lib::scene::Base, sf::Drawable
 {
-private:
 	void draw(sf::RenderTarget & target, sf::RenderStates states) const override;
 
-public:
 	using ID = ::scene::ID;
 
 	Scene(const ID id);

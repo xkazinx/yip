@@ -1,15 +1,13 @@
 #pragma once
 
-class Scene;
+struct Scene;
 
-class Camera : public sf::View, public sf::Drawable
+struct Camera : sf::View, sf::Drawable
 {
-private:
 	const Scene * _scene = nullptr;
 
 	void draw(sf::RenderTarget & target, sf::RenderStates states) const override;
 
-public:
 	Camera() : sf::View({ kResX / 2.f, kResY / 2.f }, { (float)kResX, (float)kResY }) {
 	}
 	~Camera();

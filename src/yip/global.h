@@ -1,16 +1,16 @@
 #pragma once
 #include "App.h"
 
-class App;
-class SceneMgr;
-class Camera;
-class TextMgr;
-class Random;
-class Background;
-class Button;
-class Player;
-class Object;
-class SGame;
+struct App;
+struct SceneMgr;
+struct Camera;
+struct TextMgr;
+struct Random;
+struct Background;
+struct Button;
+struct Player;
+struct Object;
+struct SGame;
 
 #define DEBUG_MODE
 
@@ -63,8 +63,7 @@ namespace font {
 }
 
 template<class T>
-class TargetStatesBase {
-public:
+struct TargetStatesBase {
 	sf::RenderTarget & target;
 	T states;
 

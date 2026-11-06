@@ -1,7 +1,6 @@
 #pragma once
-class FpsCounter
+struct FpsCounter
 {
-public:
 	FpsCounter(const string & name);
 	~FpsCounter();
 
@@ -14,7 +13,6 @@ public:
 	// The last second's count
 	u16 _last = 0;
 
-private:
 	u16 _count = 0;
 	string _name;
 	sf::Clock _clock;

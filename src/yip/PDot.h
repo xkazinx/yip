@@ -2,9 +2,8 @@
 #include "Object.h"
 
 // An enemy's shot: a red dot flying at where the player was when it was fired
-class PDot : public Object
+struct PDot : Object
 {
-public:
 	PDot(const Vector2f & pos, const Vector2f & end_pos);
 
 	void Render(TargetStatesRef && ts) const override;
@@ -15,7 +14,6 @@ public:
 	Collider GetCollider() const override;
 
 	void HandleCollition(const Object * object) override;
-private:
 	bool _HasExpired() const override;
 	Vector2f _initial_pos, _end_pos;
 	float _angle;

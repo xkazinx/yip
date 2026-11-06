@@ -1,12 +1,11 @@
 #pragma once
 #include <scene/manager.h>
 
-class Scene;
+struct Scene;
 
 // yip's scenes, one per scene::ID, switched by kazilib's scene manager
-class SceneMgr : public sf::Drawable
+struct SceneMgr : sf::Drawable
 {
-public:
 	using ID = ::scene::ID;
 
 	SceneMgr();
@@ -25,6 +24,5 @@ public:
 	void Update(const sf::Time & delta);
 	void HandleEvent(const sf::Event & event);
 
-private:
 	lib::scene::Manager _mgr;
 };

@@ -1,9 +1,8 @@
 #pragma once
 #include "Object.h"
 
-class Player : public Object
+struct Player : Object
 {
-public:
 	Player(const Vector2f & pos = { 0.f, 0.f });
 
 	~Player();
@@ -23,6 +22,5 @@ public:
 	// Enemy shots that reached it
 	u16 _hits_taken = 0;
 
-private:
 	sf::Clock _fire_timer;
 };
