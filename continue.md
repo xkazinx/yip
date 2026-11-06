@@ -4,8 +4,8 @@
 
 | Repo | Commit | State |
 |---|---|---|
-| yip | master: the web / deploy commit (this file's) on `2e46a03` (the struct cleanup) | pushed |
-| kazilib (`src/dep/kazilib`) | master `a216c7d` (browser.js held keys, on `2a274a9`: web builds) | pushed |
+| yip | master: the showcase retake (this file's) on `2e49f42` (the web / deploy commit) | pushed |
+| kazilib (`src/dep/kazilib`) | master `ad10d04` (points drawn in a browser: the star field; on `a216c7d` browser.js held keys, `2a274a9` web builds) | pushed |
 
 The kazilib pointer moved from `50df5d0` to master: `Testerino.cpp` reads
 `tcore::Endpoint::_dir` (was `Dir()`), `SceneMgr::Current` reads `Manager::_current` (was
@@ -22,6 +22,10 @@ The kazilib pointer moved from `50df5d0` to master: `Testerino.cpp` reads
   `Enemy beaten: <n>` (SGame).
 - **Deployed:** https://kazin.dev/projects/yip/ (`deploy_ubuntu.ps1`): `/opt/yip/web` on
   `kazin-music`, Caddy snippet `kazin.dev.d/yip.caddy`; static, no service.
+- **Star field in the browser:** WebGL draws `GL_POINTS` only at the shader's
+  `gl_PointSize`, which kazilib's GL ES 1 emulation never set, so the stars
+  (`sf::PrimitiveType::Points`) were 0 px; kazilib `ad10d04` sets it. Rebuilt and redeployed
+  (the coordinator), showcase retaken with the stars.
 - **Showcase** from the live page: `docs\screenshot.png` (README top), `docs\showcase\`
   `1_menu` .. `5_laser.png`, `docs\showcase\kazin\yip.jpg`, `yip-1` .. `yip-4.jpg`
   (1024x768, for the kazin.dev card; the portfolio repo is the parent session's).
@@ -35,7 +39,7 @@ The kazilib pointer moved from `50df5d0` to master: `Testerino.cpp` reads
 |---|---|
 | Testerino `play.tt` (native, Windows) | 69 passed, 0 failed |
 | `src\tests\web\run_web_test.ps1` (local, `web\`, headless Edge) | passed (enemies beaten, Escape / Enter, no page error) |
-| same, `-Url https://kazin.dev/projects/yip/` | passed (5 enemies beaten) |
+| same, `-Url https://kazin.dev/projects/yip/` (on kazilib `ad10d04`, stars drawn) | passed (4 enemies beaten) |
 
 Known gaps: only Chromium (Edge, SwiftShader) tested; no Firefox / Safari, no phone, no
 real GPU (`to-resolve.md`).
@@ -49,3 +53,4 @@ real GPU (`to-resolve.md`).
 
 1. "now I want you standarize the work and do the same with the githubs of yip, yips, tileship, tiled, nft, use various agents if well scoped"
 2. "all the process we've done with tictactoe"
+3. "I don't see the yip background"

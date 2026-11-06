@@ -8,7 +8,7 @@ the screen and fires at the yellow enemies, which fire red shots back at it.
 **Play it in your browser: https://kazin.dev/projects/yip/** (Ctrl+E brings enemies,
 A fires, the arrows fly)
 
-![The triple shot sweeping up into three enemies while their red shots come back](docs/screenshot.png)
+![The triple shot sweeping down over the star field towards four enemies while their red shots come back](docs/screenshot.png)
 
 ## Keys
 
